@@ -1,6 +1,8 @@
+image: silex/emacs:dev
+
 before_script:
-  - apt-get update -qq && apt-get install -y -qq emacs
   - emacs --version
+
 
 test:
   script:
