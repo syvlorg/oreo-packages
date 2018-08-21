@@ -337,7 +337,8 @@ and ARGS."
   (let ((command (system-packages-get-command action pack args))
         (default-directory (if system-packages-use-sudo
                                "/sudo::"
-                             default-directory)))
+                             default-directory))
+        (inhibit-read-only t))
     (async-shell-command command "*system-packages*")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
