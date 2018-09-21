@@ -241,6 +241,25 @@
           (list-installed-packages-all . nil)
           (list-dependencies-of . "rpm -qR")
           (noconfirm . nil)))
+    ;; RedHat derivatives
+    (yum .
+	 ((default-sudo . t)
+	  (install . "yum install")
+	  (search . "yum search")
+	  (uninstall . "yum remove")
+	  (update . "yum update")
+	  (clean-cache . "yum clean expire-cache")
+	  (log . "cat /var/log/yum.log")
+	  (get-info . "yum info")
+	  (get-info-remote . "repoquery --plugins -i")
+	  (list-files-provided-by . "rpm -ql")
+	  (verify-all-packages)
+	  (verify-all-dependencies)
+	  (remove-orphaned . "yum autoremove")
+	  (list-installed-packages . "yum list installed")
+	  (list-installed-packages-all . "yum list installed")
+	  (list-dependencies-of . "yum deplist")
+	  (noconfirm . "-y")))
     ;; Void
     ;; xbps is the name of the package manager, but that doesn't appear as an
     ;; executable, so let's just call it xbps-install:
