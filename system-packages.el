@@ -42,9 +42,6 @@
 ;;
 
 ;;; Code:
-(eval-when-compile
-  (require 'cl-lib))
-
 (defgroup system-packages nil
   "Manages system packages"
   :tag "System Packages"
@@ -288,10 +285,15 @@ The key is the package manager and values (usually) commands.")
 (define-obsolete-variable-alias 'system-packages-packagemanager
   'system-packages-package-manager "2017-12-25")
 (defcustom system-packages-package-manager
-  (cl-loop for (name . prop) in system-packages-supported-package-managers
-           for path = (executable-find (symbol-name name))
-           when path
-           return name)
+  (let ((managers system-packages-supported-package-managers)
+        manager)
+    (while managers
+      (progn
+        (setq manager (pop managers))
+        (if (executable-find (symbol-name (car manager)))
+            (setq managers nil)
+          (setq manager nil))))
+    (car manager))
   "Symbol containing the package manager to use.
 
 See `system-packages-supported-package-managers' for a list of
