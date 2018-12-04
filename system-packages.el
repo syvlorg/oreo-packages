@@ -2,8 +2,8 @@
 
 ;; Copyright (C) 2016-2018 J. Alexander Branham
 
-;; Author: J. Alexander Branham <branham@utexas.edu>
-;; Maintainer: J. Alexander Branham <branham@utexas.edu>
+;; Author: J. Alexander Branham <alex.branham@gmail.com>
+;; Maintainer: J. Alexander Branham <alex.branham@gmail.com>
 ;; URL: https://gitlab.com/jabranham/system-packages
 ;; Package-Requires: ((emacs "24.3"))
 ;; Version: 1.0.7
