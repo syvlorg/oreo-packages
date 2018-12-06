@@ -347,7 +347,7 @@ of passing additional arguments to the package manager."
     (setq command (mapconcat 'identity (list command pack) " "))
     (when noconfirm
       (setq args (concat args (and pack " ") noconfirm)))
-    (concat command " " args)))
+    (concat command args)))
 
 (defun system-packages--run-command (action &optional pack args)
   "Run a command asynchronously using the system's package manager.
