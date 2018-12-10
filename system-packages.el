@@ -295,10 +295,10 @@ The key is the package manager and values (usually) commands.")
           (setq manager nil))))
     (car manager))
   "Symbol containing the package manager to use.
-
 See `system-packages-supported-package-managers' for a list of
 supported software.  Tries to be smart about selecting the
-default."
+default.  If you change this value, you may also want to change
+`system-packages-use-sudo'."
   :type '(choice
           (const guix)
           (const nix-env)
