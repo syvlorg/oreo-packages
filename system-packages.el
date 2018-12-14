@@ -1,6 +1,6 @@
 ;;; system-packages.el --- functions to manage system packages -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2016-2018 J. Alexander Branham
+;; Copyright (C) 2016-2018  Free Software Foundation, Inc.
 
 ;; Author: J. Alexander Branham <alex.branham@gmail.com>
 ;; Maintainer: J. Alexander Branham <alex.branham@gmail.com>
@@ -343,8 +343,8 @@ of passing additional arguments to the package manager."
       (error (format "%S not supported in %S" action system-packages-package-manager)))
     (unless (listp command)
       (setq command (list command)))
-    (setq command (mapconcat 'identity command " && "))
-    (setq command (mapconcat 'identity (list command pack) " "))
+    (setq command (mapconcat #'identity command " && "))
+    (setq command (mapconcat #'identity (list command pack) " "))
     (when noconfirm
       (setq args (concat args (and pack " ") noconfirm)))
     (concat command args)))

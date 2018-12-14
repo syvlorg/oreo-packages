@@ -1,6 +1,6 @@
 ;;; system-packages-test.el --- ERT testing framework for system-packages.el  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2018  Alex Branham
+;; Copyright (C) 2018  Free Software Foundation, Inc.
 
 ;; Author: J. Alexander Branham <alex.branham@gmail.com>
 
@@ -46,3 +46,5 @@
   (should-error
    (let ((system-packages-package-manager 'pacaur))
      (system-packages-get-command 'install))))
+
+;;; system-packages-test.el ends here
