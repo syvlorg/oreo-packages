@@ -9,7 +9,7 @@
 ;; Version: 1.0.10
 
 
-;; This file is not part of GNU Emacs.
+;; This file is part of GNU Emacs.
 
 ;;; License:
 ;;
