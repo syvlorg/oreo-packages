@@ -13,6 +13,11 @@ packages more convenient through emacs.
   System packages is available on [[https://elpa.gnu.org/packages/system-packages.html][GNU ELPA]]. You can get it by doing
   M-x package-install RET system-packages RET.
 
+  Users of Debian ≥10 and derivatives can install it with the following:
+  #+BEGIN_SRC sh
+  sudo apt install elpa-system-packages
+  #+END_SRC
+
 * Configuration
   
   The package attempts to guess which package manager you use.  If it
