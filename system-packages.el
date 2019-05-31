@@ -161,7 +161,7 @@
           (remove-orphaned . "apt-get autoremove")
           (list-installed-packages . "dpkg -l")
           (list-installed-packages-all . "dpkg -l")
-          (list-dependencies-of . "apt-cache deps")
+          (list-dependencies-of . "apt-cache depends")
           (noconfirm . "-y")))
     (aptitude .
               ((default-sudo . t)
