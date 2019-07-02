@@ -407,7 +407,7 @@ package manager."
 Uses the package manager named in
 `system-packages-package-manager' to uninstall PACK.  You may use
 ARGS to pass options to the package manager."
-  (interactive "sWhat package to uninstall: ")
+  (interactive "sPackage to uninstall: ")
   (system-packages--run-command 'uninstall pack args))
 
 ;;;###autoload
@@ -415,7 +415,7 @@ ARGS to pass options to the package manager."
   "List the dependencies of PACK.
 
 You may use ARGS to pass options to the package manager."
-  (interactive "sWhat package to list dependencies of: ")
+  (interactive "sPackage to list dependencies of: ")
   (system-packages--run-command 'list-dependencies-of pack args))
 
 ;;;###autoload
@@ -424,7 +424,7 @@ You may use ARGS to pass options to the package manager."
 
 With a prefix argument, display remote package information.  You
 may use ARGS to pass options to the package manager."
-  (interactive "sWhat package to list info for: ")
+  (interactive "sPackage to list info for: ")
   (if current-prefix-arg
       (system-packages--run-command 'get-info-remote pack args)
     (system-packages--run-command 'get-info pack args)))
@@ -434,7 +434,7 @@ may use ARGS to pass options to the package manager."
   "List the files provided by PACK.
 
 You may use ARGS to pass options to the package manager."
-  (interactive "sWhat package to list provided files of: ")
+  (interactive "sPackage to list provided files of: ")
   (system-packages--run-command 'list-files-provided-by pack args))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
