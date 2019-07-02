@@ -6,7 +6,7 @@
 [[https://gitlab.com/jabranham/system-packages/badges/master/pipeline.svg]]
 
 This is a collection of functions to make handling installed system
-packages more convenient through emacs. 
+packages more convenient through Emacs.
 
 * Installation
 
