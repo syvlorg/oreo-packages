@@ -298,7 +298,10 @@
                    (list-dependencies-of . "xbps-query -x")
                    (noconfirm . nil))))
   "An alist of package manager commands.
-The key is the package manager and value (usually) the shell command to run.")
+The key is the package manager and value (usually) the shell command to run.
+Any occurrences of ~%p~ in the command will be replaced with the package
+name during execution, otherwise the package name is simply appended
+to the command.")
 (put 'system-packages-supported-package-managers 'risky-local-variable t)
 
 (define-obsolete-variable-alias 'system-packages-packagemanager
@@ -360,7 +363,10 @@ of passing additional arguments to the package manager."
                                              system-packages-supported-package-managers)))))))
     (unless command
       (error (format "%S not supported in %S" action system-packages-package-manager)))
-    (setq command (mapconcat #'identity (list command pack) " "))
+    (setq command
+          (if (string-match-p "%p" command)
+              (replace-regexp-in-string "%p" pack command t t)
+            (concat command " " pack)))
     (when noconfirm
       (setq args (concat args (and pack " ") noconfirm)))
     (concat command args)))
