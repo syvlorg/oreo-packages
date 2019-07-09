@@ -135,7 +135,7 @@
              (log . "cat /var/log/pacman.log")
              (get-info . "pacman -Qi")
              (get-info-remote . "pacman -Si")
-             (list-files-provided-by . "pacman -Ql")
+             (list-files-provided-by . "pacman -qQl")
              (verify-all-packages . "pacman -Qkk")
              (verify-all-dependencies . "pacman -Dk")
              (remove-orphaned . "pacman -Rns $(pacman -Qtdq)")
