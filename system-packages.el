@@ -132,10 +132,13 @@
              (uninstall . "pacman -Rns")
              (update . "pacman -Syu")
              (clean-cache . "pacman -Sc")
+             (change-log . "pacman -Qc")
              (log . "cat /var/log/pacman.log")
              (get-info . "pacman -Qi")
              (get-info-remote . "pacman -Si")
              (list-files-provided-by . "pacman -qQl")
+             (owning-file . "pacman -Qo")
+             (owning-file-remote . "pacman -F")
              (verify-all-packages . "pacman -Qkk")
              (verify-all-dependencies . "pacman -Dk")
              (remove-orphaned . "pacman -Rns $(pacman -Qtdq)")
@@ -152,9 +155,12 @@
           (update . ("apt-get update" "apt-get upgrade"))
           (clean-cache . "apt-get clean")
           (log . "cat /var/log/dpkg.log")
+          (change-log . "apt-get changelog")
           (get-info . "dpkg -s")
           (get-info-remote . "apt-cache show")
           (list-files-provided-by . "dpkg -L")
+          (owning-file . "dpkg -S")
+          (owning-file-remote . "apt-file search")
           (verify-all-packages . "debsums")
           (verify-all-dependencies . "apt-get check")
           (remove-orphaned . "apt-get autoremove")
@@ -170,9 +176,12 @@
                (update . ("apt update" "aptitude safe-upgrade"))
                (clean-cache . "aptitude clean")
                (log . "cat /var/log/dpkg.log")
+               (change-log . "aptitude changelog")
                (get-info . "aptitude show")
                (get-info-remote . "aptitude show")
                (list-files-provided-by . "dpkg -L")
+               (owning-file . "dpkg -S")
+               (owning-file-remote . "apt-file search")
                (verify-all-packages . "debsums")
                (verify-all-dependencies . "apt-get check")
                (remove-orphaned . nil) ; aptitude does this automatically
@@ -189,9 +198,12 @@
              (update . "emerge -u world")
              (clean-cache . "eclean distfiles")
              (log . "cat /var/log/portage")
+             (change-log . "equery changes -f")
              (get-info . "emerge -pv")
              (get-info-remote . "emerge -S")
              (list-files-provided-by . "equery files")
+             (owning-file . "equery belongs")
+             (owning-file-remote . "equery belongs")
              (verify-all-packages . "equery check")
              (verify-all-dependencies . "emerge -uDN world")
              (remove-orphaned . "emerge --depclean")
@@ -211,6 +223,8 @@
              (get-info . "zypper info")
              (get-info-remote . "zypper info")
              (list-files-provided-by . "rpm -Ql")
+             (owning-file . "zypper search -f")
+             (owning-file-remote . "zypper search -f")
              (verify-all-packages . "rpm -Va")
              (verify-all-dependencies . "zypper verify")
              (remove-orphaned . "zypper rm -u")
@@ -226,10 +240,13 @@
           (uninstall . "dnf remove")
           (update . ("dnf upgrade"))
           (clean-cache . "dnf clean all")
+          (change-log . "rpm -q --changelog")
           (log . "dnf history")
           (get-info . "rpm -qi")
           (get-info-remote . "dnf info")
           (list-files-provided-by . "rpm -ql")
+          (owning-file . "rpm -qf")
+          (owning-file-remote . "dnf provides")
           (verify-all-packages . "rpm -Va")
           (verify-all-dependencies . "dnf repoquery --requires")
           (remove-orphaned . "dnf autoremove")
@@ -246,9 +263,12 @@
 	  (update . "yum update")
 	  (clean-cache . "yum clean expire-cache")
 	  (log . "cat /var/log/yum.log")
+          (change-log . "rpm -q --changelog")
 	  (get-info . "yum info")
 	  (get-info-remote . "repoquery --plugins -i")
 	  (list-files-provided-by . "rpm -ql")
+          (owning-file . "rpm -qf")
+          (owning-file-remote . "repoquery -f")
 	  (verify-all-packages)
 	  (verify-all-dependencies)
 	  (remove-orphaned . "yum autoremove")
@@ -436,6 +456,27 @@ may use ARGS to pass options to the package manager."
 You may use ARGS to pass options to the package manager."
   (interactive "sPackage to list provided files of: ")
   (system-packages--run-command 'list-files-provided-by pack args))
+
+;;;###autoload
+(defun system-packages-owning-file (file &optional args)
+  "Search for packages containing FILE.
+
+Search only locally installed packages by default.  With a prefix
+argument, try to search packages not yet installed.
+
+You may use ARGS to pass options to the package manager."
+  (interactive "FFile name: ")
+  (if current-prefix-arg
+      (system-packages--run-command 'owning-file-remote file args)
+    (system-packages--run-command 'owning-file file args)))
+
+;;;###autoload
+(defun system-packages-change-log (pack &optional args)
+  "Show the change log of PACK.
+
+You may use ARGS to pass options to the package manager."
+  (interactive "sPackage to show change log of: ")
+  (system-packages--run-command 'change-log pack args))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; functions that don't take a named package
