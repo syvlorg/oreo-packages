@@ -16,5 +16,5 @@ compile: $(ELC)
 
 test:
 	$(EMACS_BATCH) --eval "(progn\
-	(load-file \"test/system-packages-test.el\") \
+	(load-file \"test/oreo-packages-test.el\") \
 	(ert-run-tests-batch-and-exit))"

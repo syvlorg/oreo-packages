@@ -1,10 +1,10 @@
-;;; system-packages.el --- functions to manage system packages -*- lexical-binding: t; -*-
+;;; oreo-packages.el --- functions to manage system packages -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2016-2021 Free Software Foundation, Inc.
 
 ;; Author: J. Alexander Branham <alex.branham@gmail.com>
 ;; Maintainer: J. Alexander Branham <alex.branham@gmail.com>
-;; URL: https://gitlab.com/jabranham/system-packages
+;; URL: https://github.com/syvlorg/oreo-packages
 ;; Package-Requires: ((emacs "24.3"))
 ;; Version: 1.0.11
 
@@ -32,22 +32,22 @@
 ;; functions include installing packages, removing packages, listing
 ;; installed packages, and others.
 
-;; Helm users might also be interested in helm-system-packages.el
-;; <https://github.com/emacs-helm/helm-system-packages>
+;; Helm users might also be interested in helm-oreo-packages.el
+;; <https://github.com/emacs-helm/helm-oreo-packages>
 
 ;; Usage:
 
-;; (require 'system-packages)
+;; (require 'oreo-packages)
 ;;
 
 ;;; Code:
-(defgroup system-packages nil
+(defgroup oreo-packages nil
   "Manages system packages"
-  :tag "System Packages"
-  :prefix "system-packages"
+  :tag "Oreo Packages"
+  :prefix "oreo-packages"
   :group 'packages)
 
-(defvar system-packages-supported-package-managers
+(defvar oreo-packages-supported-package-managers
   '(
     ;; guix
     (guix .
@@ -302,12 +302,12 @@ The key is the package manager and value (usually) the shell command to run.
 Any occurrences of ~%p~ in the command will be replaced with the package
 name during execution, otherwise the package name is simply appended
 to the command.")
-(put 'system-packages-supported-package-managers 'risky-local-variable t)
+(put 'oreo-packages-supported-package-managers 'risky-local-variable t)
 
-(define-obsolete-variable-alias 'system-packages-packagemanager
-  'system-packages-package-manager "2017-12-25")
-(defcustom system-packages-package-manager
-  (let ((managers system-packages-supported-package-managers)
+(define-obsolete-variable-alias 'oreo-packages-packagemanager
+  'oreo-packages-package-manager "2017-12-25")
+(defcustom oreo-packages-package-manager
+  (let ((managers oreo-packages-supported-package-managers)
         manager)
     (while managers
       (progn
@@ -317,10 +317,10 @@ to the command.")
           (setq manager nil))))
     (car manager))
   "Symbol naming the package manager to use.
-See `system-packages-supported-package-managers' for the list of
+See `oreo-packages-supported-package-managers' for the list of
 supported software.  Tries to be smart about selecting the
 default.  If you change this value, you may also want to change
-`system-packages-use-sudo'."
+`oreo-packages-use-sudo'."
   :type '(choice
           (const guix)
           (const nix-env)
@@ -334,35 +334,35 @@ default.  If you change this value, you may also want to change
           (const dnf)
           (const xbps-install)))
 
-(define-obsolete-variable-alias 'system-packages-usesudo
-  'system-packages-use-sudo "2017-12-25")
-(defcustom system-packages-use-sudo
-  (cdr (assoc 'default-sudo (cdr (assoc system-packages-package-manager
-                                        system-packages-supported-package-managers))))
-  "If non-nil, system-packages uses sudo for appropriate commands.
+(define-obsolete-variable-alias 'oreo-packages-usesudo
+  'oreo-packages-use-sudo "2017-12-25")
+(defcustom oreo-packages-use-sudo
+  (cdr (assoc 'default-sudo (cdr (assoc oreo-packages-package-manager
+                                        oreo-packages-supported-package-managers))))
+  "If non-nil, oreo-packages uses sudo for appropriate commands.
 
 Tries to be smart for selecting the default."
   :type 'boolean)
 
-(defcustom system-packages-noconfirm nil
+(defcustom oreo-packages-noconfirm nil
   "If non-nil, bypass prompts asking the user to confirm package upgrades."
   :type 'boolean)
 
-(defun system-packages-get-command (action &optional pack args)
+(defun oreo-packages-get-command (action &optional pack args)
   "Return a command to run as a string.
 ACTION should be in
-`system-packages-supported-package-managers' (e.g. 'install).
+`oreo-packages-supported-package-managers' (e.g. 'install).
 PACK is used to operate on a specific package, and ARGS is a way
 of passing additional arguments to the package manager."
   (let ((command
-         (cdr (assoc action (cdr (assoc system-packages-package-manager
-                                        system-packages-supported-package-managers)))))
-        (noconfirm (when system-packages-noconfirm
+         (cdr (assoc action (cdr (assoc oreo-packages-package-manager
+                                        oreo-packages-supported-package-managers)))))
+        (noconfirm (when oreo-packages-noconfirm
                      (cdr (assoc 'noconfirm
-                                 (cdr (assoc system-packages-package-manager
-                                             system-packages-supported-package-managers)))))))
+                                 (cdr (assoc oreo-packages-package-manager
+                                             oreo-packages-supported-package-managers)))))))
     (unless command
-      (error (format "%S not supported in %S" action system-packages-package-manager)))
+      (error (format "%S not supported in %S" action oreo-packages-package-manager)))
     (setq command
           (if (string-match-p "%p" command)
               (replace-regexp-in-string "%p" pack command t t)
@@ -371,97 +371,97 @@ of passing additional arguments to the package manager."
       (setq args (concat args (and pack " ") noconfirm)))
     (concat command args)))
 
-(defun system-packages--run-command (action &optional pack args)
+(defun oreo-packages--run-command (action &optional pack args)
   "Run a command asynchronously using the system's package manager.
-See `system-packages-get-command' for how to use ACTION, PACK,
+See `oreo-packages-get-command' for how to use ACTION, PACK,
 and ARGS."
-  (let ((command (system-packages-get-command action pack args))
-        (default-directory (if system-packages-use-sudo
+  (let ((command (oreo-packages-get-command action pack args))
+        (default-directory (if oreo-packages-use-sudo
                                "/sudo::"
                              default-directory))
         (inhibit-read-only t))
-    (async-shell-command command "*system-packages*")))
+    (async-shell-command command "*oreo-packages*")))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; functions on named packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;###autoload
-(defun system-packages-install (pack &optional args)
+(defun oreo-packages-install (pack &optional args)
   "Install system packages.
 
-Use the package manager from `system-packages-package-manager' to
+Use the package manager from `oreo-packages-package-manager' to
 install PACK.  You may use ARGS to pass options to the package
 manger."
   (interactive "sPackage to install: ")
-  (system-packages--run-command 'install pack args))
+  (oreo-packages--run-command 'install pack args))
 
 ;;;###autoload
-(defun system-packages-ensure (pack &optional args)
+(defun oreo-packages-ensure (pack &optional args)
   "Ensure PACK is installed on system.
-Search for PACK with `system-packages-package-installed-p', and
+Search for PACK with `oreo-packages-package-installed-p', and
 install the package if not found.  Use ARGS to pass options to
 the package manager."
   (interactive "sPackage to ensure is present: ")
-  (if (system-packages-package-installed-p pack)
+  (if (oreo-packages-package-installed-p pack)
       t
-    (system-packages-install pack args)))
+    (oreo-packages-install pack args)))
 
 ;;;###autoload
-(defalias 'system-packages-package-installed-p #'executable-find
+(defalias 'oreo-packages-package-installed-p #'executable-find
   "Return t if PACK is installed.
 Currently an alias for `executable-find', so it will give wrong
 results if the package and executable names are different.")
 
 ;;;###autoload
-(defun system-packages-search (pack &optional args)
+(defun oreo-packages-search (pack &optional args)
   "Search for system packages.
 
-Use the package manager named in `system-packages-package-manager'
+Use the package manager named in `oreo-packages-package-manager'
 to search for PACK.  You may use ARGS to pass options to the
 package manager."
   (interactive "sSearch string: ")
-  (system-packages--run-command 'search pack args))
+  (oreo-packages--run-command 'search pack args))
 
 ;;;###autoload
-(defun system-packages-uninstall (pack &optional args)
+(defun oreo-packages-uninstall (pack &optional args)
   "Uninstall system packages.
 
 Uses the package manager named in
-`system-packages-package-manager' to uninstall PACK.  You may use
+`oreo-packages-package-manager' to uninstall PACK.  You may use
 ARGS to pass options to the package manager."
   (interactive "sPackage to uninstall: ")
-  (system-packages--run-command 'uninstall pack args))
+  (oreo-packages--run-command 'uninstall pack args))
 
 ;;;###autoload
-(defun system-packages-list-dependencies-of (pack &optional args)
+(defun oreo-packages-list-dependencies-of (pack &optional args)
   "List the dependencies of PACK.
 
 You may use ARGS to pass options to the package manager."
   (interactive "sPackage to list dependencies of: ")
-  (system-packages--run-command 'list-dependencies-of pack args))
+  (oreo-packages--run-command 'list-dependencies-of pack args))
 
 ;;;###autoload
-(defun system-packages-get-info (pack &optional args)
+(defun oreo-packages-get-info (pack &optional args)
   "Display local package information of PACK.
 
 With a prefix argument, display remote package information.  You
 may use ARGS to pass options to the package manager."
   (interactive "sPackage to list info for: ")
   (if current-prefix-arg
-      (system-packages--run-command 'get-info-remote pack args)
-    (system-packages--run-command 'get-info pack args)))
+      (oreo-packages--run-command 'get-info-remote pack args)
+    (oreo-packages--run-command 'get-info pack args)))
 
 ;;;###autoload
-(defun system-packages-list-files-provided-by (pack &optional args)
+(defun oreo-packages-list-files-provided-by (pack &optional args)
   "List the files provided by PACK.
 
 You may use ARGS to pass options to the package manager."
   (interactive "sPackage to list provided files of: ")
-  (system-packages--run-command 'list-files-provided-by pack args))
+  (oreo-packages--run-command 'list-files-provided-by pack args))
 
 ;;;###autoload
-(defun system-packages-owning-file (file &optional args)
+(defun oreo-packages-owning-file (file &optional args)
   "Search for packages containing FILE.
 
 Search only locally installed packages by default.  With a prefix
@@ -470,84 +470,84 @@ argument, try to search packages not yet installed.
 You may use ARGS to pass options to the package manager."
   (interactive "FFile name: ")
   (if current-prefix-arg
-      (system-packages--run-command 'owning-file-remote file args)
-    (system-packages--run-command 'owning-file file args)))
+      (oreo-packages--run-command 'owning-file-remote file args)
+    (oreo-packages--run-command 'owning-file file args)))
 
 ;;;###autoload
-(defun system-packages-change-log (pack &optional args)
+(defun oreo-packages-change-log (pack &optional args)
   "Show the change log of PACK.
 
 You may use ARGS to pass options to the package manager."
   (interactive "sPackage to show change log of: ")
-  (system-packages--run-command 'change-log pack args))
+  (oreo-packages--run-command 'change-log pack args))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; functions that don't take a named package
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;###autoload
-(defun system-packages-update (&optional args)
+(defun oreo-packages-update (&optional args)
   "Update system packages.
 
-Use the package manager `system-packages-package-manager'.  You
+Use the package manager `oreo-packages-package-manager'.  You
 may use ARGS to pass options to the package manger."
   (interactive)
-  (system-packages--run-command 'update nil args))
+  (oreo-packages--run-command 'update nil args))
 
 ;;;###autoload
-(defun system-packages-remove-orphaned (&optional args)
+(defun oreo-packages-remove-orphaned (&optional args)
   "Remove orphaned packages.
 
 Uses the package manager named in
-`system-packages-package-manager'.  You may use ARGS to pass
+`oreo-packages-package-manager'.  You may use ARGS to pass
 options to the package manger."
   (interactive)
-  (system-packages--run-command 'remove-orphaned nil args))
+  (oreo-packages--run-command 'remove-orphaned nil args))
 
 ;;;###autoload
-(defun system-packages-list-installed-packages (all &optional args)
+(defun oreo-packages-list-installed-packages (all &optional args)
   "List explicitly installed packages.
 
 Uses the package manager named in
-`system-packages-package-manager'.  With
+`oreo-packages-package-manager'.  With
 \\[universal-argument] (for ALL), list all installed packages.
 You may use ARGS to pass options to the package manger."
   (interactive "P")
   (if all
-      (system-packages--run-command 'list-installed-packages-all nil args)
-    (system-packages--run-command 'list-installed-packages nil args)))
+      (oreo-packages--run-command 'list-installed-packages-all nil args)
+    (oreo-packages--run-command 'list-installed-packages nil args)))
 
 ;;;###autoload
-(defun system-packages-clean-cache (&optional args)
+(defun oreo-packages-clean-cache (&optional args)
   "Clean the cache of the package manager.
 
 You may use ARGS to pass options to the package manger."
   (interactive)
-  (system-packages--run-command 'clean-cache nil args))
+  (oreo-packages--run-command 'clean-cache nil args))
 
 ;;;###autoload
-(defun system-packages-log (&optional args)
-  "Show a log from `system-packages-package-manager'.
+(defun oreo-packages-log (&optional args)
+  "Show a log from `oreo-packages-package-manager'.
 
 You may use ARGS to pass options to the package manger."
   (interactive)
-  (system-packages--run-command 'log args))
+  (oreo-packages--run-command 'log args))
 
 ;;;###autoload
-(defun system-packages-verify-all-packages (&optional args)
+(defun oreo-packages-verify-all-packages (&optional args)
   "Check that files owned by packages are present on the system.
 
 You may use ARGS to pass options to the package manger."
   (interactive)
-  (system-packages--run-command 'verify-all-packages nil args))
+  (oreo-packages--run-command 'verify-all-packages nil args))
 
 ;;;###autoload
-(defun system-packages-verify-all-dependencies (&optional args)
+(defun oreo-packages-verify-all-dependencies (&optional args)
   "Verify that all required dependencies are installed on the system.
 
 You may use ARGS to pass options to the package manger."
   (interactive)
-  (system-packages--run-command 'verify-all-dependencies nil args))
+  (oreo-packages--run-command 'verify-all-dependencies nil args))
 
-(provide 'system-packages)
-;;; system-packages.el ends here
+(provide 'oreo-packages)
+;;; oreo-packages.el ends here

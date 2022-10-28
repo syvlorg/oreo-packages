@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-10-28 Fri 01:38 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Oreo Packages</title>
+<meta name="author" content="J. Alexander Branham, Jeet Ray" />
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://combinatronics.io/sylvorg/settings/main/src/styles/primary/syvl.css" />
+<link rel="icon" href="https://combinatronics.io/sylvorg/settings/main/src/icons/favicons/shiny-zigzagoon-galar.ico" sizes="any" />
+<link rel="icon" href="https://combinatronics.io/sylvorg/settings/main/src/icons/favicons/shiny-zigzagoon-galar.svg" />
+<link rel="manifest" href="https://combinatronics.io/sylvorg/settings/main/manifest.json" />
+<link rel="stylesheet" type="text/css" href="https://combinatronics.io/sylvorg/settings/main/src/styles/highlight/paraiso-dark.min.css" />
+<script src="https://combinatronics.io/sylvorg/settings/main/src/scripts/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<div class="header">
+<h1>We Are Syvlorg.</h1>
+<a href="">About Me</a>
+<a href="">About This Website</a>
+<a href="">About Syvlorg</a>
+<a href="https://resume.syvl.org">Résumé</a>
+<a href="https://index.syvl.org">Index</a>
+</div>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Oreo Packages</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgd155c4f">Installation</a></li>
+<li><a href="#org295d905">Configuration</a></li>
+<li><a href="#org49d30bd">Supported package managers</a></li>
+<li><a href="#org4fcf34a">Usage</a></li>
+<li><a href="#orgfa2eba2">Adding other package managers</a></li>
+<li><a href="#orge1d5bb3">See also</a></li>
+</ul>
+</div>
+</div>
+
+<div id="orga6400a8" class="figure">
+<p><img src="https://github.com/syvlorg/oreo-packages/badges/master/pipeline.svg" alt="pipeline.svg" class="org-svg" />
+</p>
+</div>
+
+<p>
+<code>NOTE:</code> This has been forked from <a href="https://gitlab.com/jabranham/system-packages">Alex Branham / @jabranham</a>;
+however, due to GitLab's policy of deleting the projects of non-paying users, I have moved my fork here.
+</p>
+
+<p>
+This is a collection of functions to make handling installed system
+packages more convenient through Emacs.
+</p>
+
+<div id="outline-container-orgd155c4f" class="outline-2">
+<h2 id="orgd155c4f">Installation</h2>
+<div class="outline-text-2" id="text-orgd155c4f">
+<p>
+Oreo packages is available on <a href="https://elpa.gnu.org/packages/oreo-packages.html">GNU ELPA</a>. You can get it by doing
+M-x package-install RET oreo-packages RET.
+</p>
+
+<p>
+Users of Debian ≥10 and derivatives can install it with the following:
+</p>
+<div class="org-src-container">
+<pre><code class="language-sh match-braces rainbow-braces">  sudo apt install elpa-oreo-packages
+</code></pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org295d905" class="outline-2">
+<h2 id="org295d905">Configuration</h2>
+<div class="outline-text-2" id="text-org295d905">
+<p>
+The package attempts to guess which package manager you use.  If it
+guesses wrong (or you'd like to set it manually), you may modify the
+variable <code>oreo-packages-package-manager</code>.
+</p>
+
+<p>
+We also attempt to guess whether or not to use sudo with appropriate
+commands (like installing and uninstalling packages). Some package
+managers (like homebrew) warn not to use sudo, others (like <code>apt</code>)
+need sudo privileges. You may set this manually by configuring
+<code>oreo-packages-use-sudo</code>.
+</p>
+
+<p>
+Other package customization options can be accessed with M-x
+<code>customize-group RET oreo-packages RET</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org49d30bd" class="outline-2">
+<h2 id="org49d30bd">Supported package managers</h2>
+<div class="outline-text-2" id="text-org49d30bd">
+<p>
+Currently, <code>oreo-packages</code> knows about the following package managers.
+You can see exactly what commands are associated with <code>oreo-packages</code>
+commands by checking <code>oreo-packages-supported-package-managers</code>.  The
+default package manager that we use is the first one found from this
+list:
+</p>
+
+<ul class="org-ul">
+<li>guix</li>
+<li>nix</li>
+<li>brew</li>
+<li>macports</li>
+<li>pacman</li>
+<li>apt</li>
+<li>aptitude</li>
+<li>emerge</li>
+<li>zypper</li>
+<li>dnf</li>
+<li>xbps</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org4fcf34a" class="outline-2">
+<h2 id="org4fcf34a">Usage</h2>
+<div class="outline-text-2" id="text-org4fcf34a">
+<p>
+The package doesn't presume to set keybindings for you, so you may set
+those up yourself or simply call functions with <code>M-x</code>. All commands
+start with <code>oreo-packages</code>
+</p>
+</div>
+</div>
+<div id="outline-container-orgfa2eba2" class="outline-2">
+<h2 id="orgfa2eba2">Adding other package managers</h2>
+<div class="outline-text-2" id="text-orgfa2eba2">
+<p>
+It is straightforward to add support for package managers.  First, add
+the commands to <code>oreo-packages-supported-package-managers</code> like so:
+</p>
+
+<div class="org-src-container">
+<pre><code class="language-lisp match-braces rainbow-braces">  (add-to-list 'oreo-packages-supported-package-managers
+               '(pacaur .
+                        ((default-sudo . nil)
+                         (install . "pacaur -S")
+                         (search . "pacaur -Ss")
+                         (uninstall . "pacaur -Rs")
+                         (update . "pacaur -Syu")
+                         (clean-cache . "pacaur -Sc")
+                         (log . "cat /var/log/pacman.log")
+                         (change-log . "pacaur -Qc")
+                         (get-info . "pacaur -Qi")
+                         (get-info-remote . "pacaur -Si")
+                         (list-files-provided-by . "pacaur -Ql")
+                         (owning-file . "pacaur -Qo")
+                         (owning-file-remote . "pacaur -F")
+                         (verify-all-packages . "pacaur -Qkk")
+                         (verify-all-dependencies . "pacaur -Dk")
+                         (remove-orphaned . "pacaur -Rns $(pacman -Qtdq)")
+                         (list-installed-packages . "pacaur -Qe")
+                         (list-installed-packages-all . "pacaur -Q")
+                         (list-dependencies-of . "pacaur -Qi")
+                         (noconfirm . "--noconfirm"))))
+</code></pre>
+</div>
+
+<p>
+Any occurrences of <code>%p</code> in a command will be replaced with the package
+name during execution, otherwise the package name is simply appended
+to the command.
+</p>
+
+<p>
+You may also need to adjust <code>oreo-packages-package-manager</code> and
+<code>oreo-packages-use-sudo</code> accordingly:
+</p>
+
+<div class="org-src-container">
+<pre><code class="language-lisp match-braces rainbow-braces">  (setq oreo-packages-use-sudo t)
+  (setq oreo-packages-package-manager 'pacaur)
+</code></pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orge1d5bb3" class="outline-2">
+<h2 id="orge1d5bb3">See also</h2>
+<div class="outline-text-2" id="text-orge1d5bb3">
+<p>
+Helm users might like <a href="https://github.com/emacs-helm/helm-oreo-packages">helm-oreo-packages</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: J. Alexander Branham, Jeet Ray</p>
+<p class="date">Created: 2022-10-28 Fri 01:38</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
