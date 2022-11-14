@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-10-28 Fri 01:42 -->
+<!-- 2022-11-14 Mon 10:25 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Oreo Packages</title>
+<meta name="generator" content="Org mode" />
 <meta name="author" content="J. Alexander Branham, Jeet Ray" />
-<meta name="generator" content="Org Mode" />
 <link rel="stylesheet" type="text/css" href="https://combinatronics.io/sylvorg/settings/main/src/styles/primary/syvl.css" />
 <link rel="icon" href="https://combinatronics.io/sylvorg/settings/main/src/icons/favicons/shiny-zigzagoon-galar.ico" sizes="any" />
 <link rel="icon" href="https://combinatronics.io/sylvorg/settings/main/src/icons/favicons/shiny-zigzagoon-galar.svg" />
@@ -24,26 +24,49 @@
 <a href="https://resume.syvl.org">Résumé</a>
 <a href="https://index.syvl.org">Index</a>
 </div>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
 </head>
 <body>
-<div id="content" class="content">
+<div id="content">
 <h1 class="title">Oreo Packages</h1>
-<div id="table-of-contents" role="doc-toc">
+<div id="table-of-contents">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents" role="doc-toc">
+<div id="text-table-of-contents">
 <ul>
-<li><a href="#orge814011">Installation</a></li>
-<li><a href="#org4a4795a">Configuration</a></li>
-<li><a href="#org3f42799">Supported package managers</a></li>
-<li><a href="#org57f2d0b">Usage</a></li>
-<li><a href="#org94b10dd">Adding other package managers</a></li>
-<li><a href="#orgc323f5c">See also</a></li>
+<li><a href="#org9c7de86">Installation</a></li>
+<li><a href="#orgc2605a4">Configuration</a></li>
+<li><a href="#org509aa48">Supported package managers</a></li>
+<li><a href="#orgfe6f11a">Usage</a></li>
+<li><a href="#org89e8f49">Adding other package managers</a></li>
+<li><a href="#orgd4d8d6a">See also</a></li>
 </ul>
 </div>
 </div>
 
-<div id="org874d27e" class="figure">
-<p><img src="https://github.com/syvlorg/oreo-packages/badges/master/pipeline.svg" alt="pipeline.svg" class="org-svg" />
+<div id="org5a36754" class="figure">
+<p><object type="image/svg+xml" data="https://github.com/syvlorg/oreo-packages/badges/master/pipeline.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
 </p>
 </div>
 
@@ -57,9 +80,9 @@ This is a collection of functions to make handling installed system
 packages more convenient through Emacs.
 </p>
 
-<div id="outline-container-orge814011" class="outline-2">
-<h2 id="orge814011">Installation</h2>
-<div class="outline-text-2" id="text-orge814011">
+<div id="outline-container-org9c7de86" class="outline-2">
+<h2 id="org9c7de86">Installation</h2>
+<div class="outline-text-2" id="text-org9c7de86">
 <p>
 Oreo packages is available on <a href="https://elpa.gnu.org/packages/oreo-packages.html">GNU ELPA</a>. You can get it by doing
 M-x package-install RET oreo-packages RET.
@@ -75,9 +98,9 @@ Users of Debian ≥10 and derivatives can install it with the following:
 </div>
 </div>
 
-<div id="outline-container-org4a4795a" class="outline-2">
-<h2 id="org4a4795a">Configuration</h2>
-<div class="outline-text-2" id="text-org4a4795a">
+<div id="outline-container-orgc2605a4" class="outline-2">
+<h2 id="orgc2605a4">Configuration</h2>
+<div class="outline-text-2" id="text-orgc2605a4">
 <p>
 The package attempts to guess which package manager you use.  If it
 guesses wrong (or you'd like to set it manually), you may modify the
@@ -99,9 +122,9 @@ Other package customization options can be accessed with M-x
 </div>
 </div>
 
-<div id="outline-container-org3f42799" class="outline-2">
-<h2 id="org3f42799">Supported package managers</h2>
-<div class="outline-text-2" id="text-org3f42799">
+<div id="outline-container-org509aa48" class="outline-2">
+<h2 id="org509aa48">Supported package managers</h2>
+<div class="outline-text-2" id="text-org509aa48">
 <p>
 Currently, <code>oreo-packages</code> knows about the following package managers.
 You can see exactly what commands are associated with <code>oreo-packages</code>
@@ -126,9 +149,9 @@ list:
 </div>
 </div>
 
-<div id="outline-container-org57f2d0b" class="outline-2">
-<h2 id="org57f2d0b">Usage</h2>
-<div class="outline-text-2" id="text-org57f2d0b">
+<div id="outline-container-orgfe6f11a" class="outline-2">
+<h2 id="orgfe6f11a">Usage</h2>
+<div class="outline-text-2" id="text-orgfe6f11a">
 <p>
 The package doesn't presume to set keybindings for you, so you may set
 those up yourself or simply call functions with <code>M-x</code>. All commands
@@ -136,9 +159,9 @@ start with <code>oreo-packages</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org94b10dd" class="outline-2">
-<h2 id="org94b10dd">Adding other package managers</h2>
-<div class="outline-text-2" id="text-org94b10dd">
+<div id="outline-container-org89e8f49" class="outline-2">
+<h2 id="org89e8f49">Adding other package managers</h2>
+<div class="outline-text-2" id="text-org89e8f49">
 <p>
 It is straightforward to add support for package managers.  First, add
 the commands to <code>oreo-packages-supported-package-managers</code> like so:
@@ -188,9 +211,9 @@ You may also need to adjust <code>oreo-packages-package-manager</code> and
 </div>
 </div>
 </div>
-<div id="outline-container-orgc323f5c" class="outline-2">
-<h2 id="orgc323f5c">See also</h2>
-<div class="outline-text-2" id="text-orgc323f5c">
+<div id="outline-container-orgd4d8d6a" class="outline-2">
+<h2 id="orgd4d8d6a">See also</h2>
+<div class="outline-text-2" id="text-orgd4d8d6a">
 <p>
 Helm users might like <a href="https://github.com/emacs-helm/helm-oreo-packages">helm-oreo-packages</a>
 </p>
@@ -199,7 +222,7 @@ Helm users might like <a href="https://github.com/emacs-helm/helm-oreo-packages"
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: J. Alexander Branham, Jeet Ray</p>
-<p class="date">Created: 2022-10-28 Fri 01:42</p>
+<p class="date">Created: 2022-11-14 Mon 10:25</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
