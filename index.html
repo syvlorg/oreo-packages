@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2023-09-04 Mon 14:03 -->
+<!-- 2023-09-04 Mon 14:51 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Oreo Packages</title>
@@ -32,17 +32,17 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org23ae892">Installation</a></li>
-<li><a href="#org82f70c6">Configuration</a></li>
-<li><a href="#org32b9cff">Supported package managers</a></li>
-<li><a href="#org77ef670">Usage</a></li>
-<li><a href="#org304ebbf">Adding other package managers</a></li>
-<li><a href="#orgb71de44">See also</a></li>
+<li><a href="#org1125928">Installation</a></li>
+<li><a href="#org873f252">Configuration</a></li>
+<li><a href="#org5e75e28">Supported package managers</a></li>
+<li><a href="#orga98180e">Usage</a></li>
+<li><a href="#org98f609b">Adding other package managers</a></li>
+<li><a href="#org87efa79">See also</a></li>
 </ul>
 </div>
 </div>
 
-<div id="org903064b" class="figure">
+<div id="orgde547bf" class="figure">
 <p><img src="https://github.com/syvlorg/oreo-packages/badges/master/pipeline.svg" alt="pipeline.svg" class="org-svg" />
 </p>
 </div>
@@ -57,9 +57,9 @@ This is a collection of functions to make handling installed system
 packages more convenient through Emacs.
 </p>
 
-<div id="outline-container-org23ae892" class="outline-2">
-<h2 id="org23ae892">Installation</h2>
-<div class="outline-text-2" id="text-org23ae892">
+<div id="outline-container-org1125928" class="outline-2">
+<h2 id="org1125928">Installation</h2>
+<div class="outline-text-2" id="text-org1125928">
 <p>
 Oreo packages is available on <a href="https://elpa.gnu.org/packages/oreo-packages.html">GNU ELPA</a>. You can get it by doing
 M-x package-install RET oreo-packages RET.
@@ -75,9 +75,9 @@ Users of Debian ≥10 and derivatives can install it with the following:
 </div>
 </div>
 
-<div id="outline-container-org82f70c6" class="outline-2">
-<h2 id="org82f70c6">Configuration</h2>
-<div class="outline-text-2" id="text-org82f70c6">
+<div id="outline-container-org873f252" class="outline-2">
+<h2 id="org873f252">Configuration</h2>
+<div class="outline-text-2" id="text-org873f252">
 <p>
 The package attempts to guess which package manager you use.  If it
 guesses wrong (or you'd like to set it manually), you may modify the
@@ -99,9 +99,9 @@ Other package customization options can be accessed with M-x
 </div>
 </div>
 
-<div id="outline-container-org32b9cff" class="outline-2">
-<h2 id="org32b9cff">Supported package managers</h2>
-<div class="outline-text-2" id="text-org32b9cff">
+<div id="outline-container-org5e75e28" class="outline-2">
+<h2 id="org5e75e28">Supported package managers</h2>
+<div class="outline-text-2" id="text-org5e75e28">
 <p>
 Currently, <code>oreo-packages</code> knows about the following package managers.
 You can see exactly what commands are associated with <code>oreo-packages</code>
@@ -126,9 +126,9 @@ list:
 </div>
 </div>
 
-<div id="outline-container-org77ef670" class="outline-2">
-<h2 id="org77ef670">Usage</h2>
-<div class="outline-text-2" id="text-org77ef670">
+<div id="outline-container-orga98180e" class="outline-2">
+<h2 id="orga98180e">Usage</h2>
+<div class="outline-text-2" id="text-orga98180e">
 <p>
 The package doesn't presume to set keybindings for you, so you may set
 those up yourself or simply call functions with <code>M-x</code>. All commands
@@ -136,9 +136,9 @@ start with <code>oreo-packages</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org304ebbf" class="outline-2">
-<h2 id="org304ebbf">Adding other package managers</h2>
-<div class="outline-text-2" id="text-org304ebbf">
+<div id="outline-container-org98f609b" class="outline-2">
+<h2 id="org98f609b">Adding other package managers</h2>
+<div class="outline-text-2" id="text-org98f609b">
 <p>
 It is straightforward to add support for package managers.  First, add
 the commands to <code>oreo-packages-supported-package-managers</code> like so:
@@ -188,9 +188,9 @@ You may also need to adjust <code>oreo-packages-package-manager</code> and
 </div>
 </div>
 </div>
-<div id="outline-container-orgb71de44" class="outline-2">
-<h2 id="orgb71de44">See also</h2>
-<div class="outline-text-2" id="text-orgb71de44">
+<div id="outline-container-org87efa79" class="outline-2">
+<h2 id="org87efa79">See also</h2>
+<div class="outline-text-2" id="text-org87efa79">
 <p>
 Helm users might like <a href="https://github.com/emacs-helm/helm-oreo-packages">helm-oreo-packages</a>
 </p>
@@ -199,7 +199,7 @@ Helm users might like <a href="https://github.com/emacs-helm/helm-oreo-packages"
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: J. Alexander Branham, Jeet Ray</p>
-<p class="date">Created: 2023-09-04 Mon 14:03</p>
+<p class="date">Created: 2023-09-04 Mon 14:51</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
