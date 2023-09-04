@@ -3,18 +3,18 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-11-14 Mon 10:25 -->
+<!-- 2023-09-04 Mon 12:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Oreo Packages</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="J. Alexander Branham, Jeet Ray" />
-<link rel="stylesheet" type="text/css" href="https://combinatronics.io/sylvorg/settings/main/src/styles/primary/syvl.css" />
-<link rel="icon" href="https://combinatronics.io/sylvorg/settings/main/src/icons/favicons/shiny-zigzagoon-galar.ico" sizes="any" />
-<link rel="icon" href="https://combinatronics.io/sylvorg/settings/main/src/icons/favicons/shiny-zigzagoon-galar.svg" />
-<link rel="manifest" href="https://combinatronics.io/sylvorg/settings/main/manifest.json" />
-<link rel="stylesheet" type="text/css" href="https://combinatronics.io/sylvorg/settings/main/src/styles/highlight/paraiso-dark.min.css" />
-<script src="https://combinatronics.io/sylvorg/settings/main/src/scripts/highlight/highlight.min.js"></script>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://combinatronics.io/sylvorg/bundle/main/src/styles/primary/syvl.css" />
+<link rel="icon" href="https://combinatronics.io/sylvorg/bundle/main/src/icons/favicons/shiny-zigzagoon-galar.ico" sizes="any" />
+<link rel="icon" href="https://combinatronics.io/sylvorg/bundle/main/src/icons/favicons/shiny-zigzagoon-galar.svg" />
+<link rel="manifest" href="https://combinatronics.io/sylvorg/bundle/main/manifest.json" />
+<link rel="stylesheet" type="text/css" href="https://combinatronics.io/sylvorg/bundle/main/src/styles/highlight/paraiso-dark.min.css" />
+<script src="https://combinatronics.io/sylvorg/bundle/main/src/scripts/highlight/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
 <div class="header">
 <h1>We Are Syvlorg.</h1>
@@ -24,49 +24,26 @@
 <a href="https://resume.syvl.org">Résumé</a>
 <a href="https://index.syvl.org">Index</a>
 </div>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
-</script>
 </head>
 <body>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">Oreo Packages</h1>
-<div id="table-of-contents">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org9c7de86">Installation</a></li>
-<li><a href="#orgc2605a4">Configuration</a></li>
-<li><a href="#org509aa48">Supported package managers</a></li>
-<li><a href="#orgfe6f11a">Usage</a></li>
-<li><a href="#org89e8f49">Adding other package managers</a></li>
-<li><a href="#orgd4d8d6a">See also</a></li>
+<li><a href="#org2ad7026">Installation</a></li>
+<li><a href="#orge2df718">Configuration</a></li>
+<li><a href="#org98b0899">Supported package managers</a></li>
+<li><a href="#org1cc766a">Usage</a></li>
+<li><a href="#org0424e62">Adding other package managers</a></li>
+<li><a href="#org7cb6314">See also</a></li>
 </ul>
 </div>
 </div>
 
-<div id="org5a36754" class="figure">
-<p><object type="image/svg+xml" data="https://github.com/syvlorg/oreo-packages/badges/master/pipeline.svg" class="org-svg">
-Sorry, your browser does not support SVG.</object>
+<div id="org6bf9ef7" class="figure">
+<p><img src="https://github.com/syvlorg/oreo-packages/badges/master/pipeline.svg" alt="pipeline.svg" class="org-svg" />
 </p>
 </div>
 
@@ -80,9 +57,9 @@ This is a collection of functions to make handling installed system
 packages more convenient through Emacs.
 </p>
 
-<div id="outline-container-org9c7de86" class="outline-2">
-<h2 id="org9c7de86">Installation</h2>
-<div class="outline-text-2" id="text-org9c7de86">
+<div id="outline-container-org2ad7026" class="outline-2">
+<h2 id="org2ad7026">Installation</h2>
+<div class="outline-text-2" id="text-org2ad7026">
 <p>
 Oreo packages is available on <a href="https://elpa.gnu.org/packages/oreo-packages.html">GNU ELPA</a>. You can get it by doing
 M-x package-install RET oreo-packages RET.
@@ -98,9 +75,9 @@ Users of Debian ≥10 and derivatives can install it with the following:
 </div>
 </div>
 
-<div id="outline-container-orgc2605a4" class="outline-2">
-<h2 id="orgc2605a4">Configuration</h2>
-<div class="outline-text-2" id="text-orgc2605a4">
+<div id="outline-container-orge2df718" class="outline-2">
+<h2 id="orge2df718">Configuration</h2>
+<div class="outline-text-2" id="text-orge2df718">
 <p>
 The package attempts to guess which package manager you use.  If it
 guesses wrong (or you'd like to set it manually), you may modify the
@@ -122,9 +99,9 @@ Other package customization options can be accessed with M-x
 </div>
 </div>
 
-<div id="outline-container-org509aa48" class="outline-2">
-<h2 id="org509aa48">Supported package managers</h2>
-<div class="outline-text-2" id="text-org509aa48">
+<div id="outline-container-org98b0899" class="outline-2">
+<h2 id="org98b0899">Supported package managers</h2>
+<div class="outline-text-2" id="text-org98b0899">
 <p>
 Currently, <code>oreo-packages</code> knows about the following package managers.
 You can see exactly what commands are associated with <code>oreo-packages</code>
@@ -149,9 +126,9 @@ list:
 </div>
 </div>
 
-<div id="outline-container-orgfe6f11a" class="outline-2">
-<h2 id="orgfe6f11a">Usage</h2>
-<div class="outline-text-2" id="text-orgfe6f11a">
+<div id="outline-container-org1cc766a" class="outline-2">
+<h2 id="org1cc766a">Usage</h2>
+<div class="outline-text-2" id="text-org1cc766a">
 <p>
 The package doesn't presume to set keybindings for you, so you may set
 those up yourself or simply call functions with <code>M-x</code>. All commands
@@ -159,9 +136,9 @@ start with <code>oreo-packages</code>
 </p>
 </div>
 </div>
-<div id="outline-container-org89e8f49" class="outline-2">
-<h2 id="org89e8f49">Adding other package managers</h2>
-<div class="outline-text-2" id="text-org89e8f49">
+<div id="outline-container-org0424e62" class="outline-2">
+<h2 id="org0424e62">Adding other package managers</h2>
+<div class="outline-text-2" id="text-org0424e62">
 <p>
 It is straightforward to add support for package managers.  First, add
 the commands to <code>oreo-packages-supported-package-managers</code> like so:
@@ -171,25 +148,25 @@ the commands to <code>oreo-packages-supported-package-managers</code> like so:
 <pre><code class="language-lisp match-braces rainbow-braces">  (add-to-list 'oreo-packages-supported-package-managers
                '(pacaur .
                         ((default-sudo . nil)
-                         (install . "pacaur -S")
-                         (search . "pacaur -Ss")
-                         (uninstall . "pacaur -Rs")
-                         (update . "pacaur -Syu")
-                         (clean-cache . "pacaur -Sc")
-                         (log . "cat /var/log/pacman.log")
-                         (change-log . "pacaur -Qc")
-                         (get-info . "pacaur -Qi")
-                         (get-info-remote . "pacaur -Si")
-                         (list-files-provided-by . "pacaur -Ql")
-                         (owning-file . "pacaur -Qo")
-                         (owning-file-remote . "pacaur -F")
-                         (verify-all-packages . "pacaur -Qkk")
-                         (verify-all-dependencies . "pacaur -Dk")
-                         (remove-orphaned . "pacaur -Rns $(pacman -Qtdq)")
-                         (list-installed-packages . "pacaur -Qe")
-                         (list-installed-packages-all . "pacaur -Q")
-                         (list-dependencies-of . "pacaur -Qi")
-                         (noconfirm . "--noconfirm"))))
+                         (install . <span style="font-style: italic;">"pacaur -S"</span>)
+                         (search . <span style="font-style: italic;">"pacaur -Ss"</span>)
+                         (uninstall . <span style="font-style: italic;">"pacaur -Rs"</span>)
+                         (update . <span style="font-style: italic;">"pacaur -Syu"</span>)
+                         (clean-cache . <span style="font-style: italic;">"pacaur -Sc"</span>)
+                         (log . <span style="font-style: italic;">"cat /var/log/pacman.log"</span>)
+                         (change-log . <span style="font-style: italic;">"pacaur -Qc"</span>)
+                         (get-info . <span style="font-style: italic;">"pacaur -Qi"</span>)
+                         (get-info-remote . <span style="font-style: italic;">"pacaur -Si"</span>)
+                         (list-files-provided-by . <span style="font-style: italic;">"pacaur -Ql"</span>)
+                         (owning-file . <span style="font-style: italic;">"pacaur -Qo"</span>)
+                         (owning-file-remote . <span style="font-style: italic;">"pacaur -F"</span>)
+                         (verify-all-packages . <span style="font-style: italic;">"pacaur -Qkk"</span>)
+                         (verify-all-dependencies . <span style="font-style: italic;">"pacaur -Dk"</span>)
+                         (remove-orphaned . <span style="font-style: italic;">"pacaur -Rns $(pacman -Qtdq)"</span>)
+                         (list-installed-packages . <span style="font-style: italic;">"pacaur -Qe"</span>)
+                         (list-installed-packages-all . <span style="font-style: italic;">"pacaur -Q"</span>)
+                         (list-dependencies-of . <span style="font-style: italic;">"pacaur -Qi"</span>)
+                         (noconfirm . <span style="font-style: italic;">"--noconfirm"</span>))))
 </code></pre>
 </div>
 
@@ -205,15 +182,15 @@ You may also need to adjust <code>oreo-packages-package-manager</code> and
 </p>
 
 <div class="org-src-container">
-<pre><code class="language-lisp match-braces rainbow-braces">  (setq oreo-packages-use-sudo t)
-  (setq oreo-packages-package-manager 'pacaur)
+<pre><code class="language-lisp match-braces rainbow-braces">  (<span style="font-weight: bold;">setq</span> oreo-packages-use-sudo t)
+  (<span style="font-weight: bold;">setq</span> oreo-packages-package-manager 'pacaur)
 </code></pre>
 </div>
 </div>
 </div>
-<div id="outline-container-orgd4d8d6a" class="outline-2">
-<h2 id="orgd4d8d6a">See also</h2>
-<div class="outline-text-2" id="text-orgd4d8d6a">
+<div id="outline-container-org7cb6314" class="outline-2">
+<h2 id="org7cb6314">See also</h2>
+<div class="outline-text-2" id="text-org7cb6314">
 <p>
 Helm users might like <a href="https://github.com/emacs-helm/helm-oreo-packages">helm-oreo-packages</a>
 </p>
@@ -222,7 +199,7 @@ Helm users might like <a href="https://github.com/emacs-helm/helm-oreo-packages"
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: J. Alexander Branham, Jeet Ray</p>
-<p class="date">Created: 2022-11-14 Mon 10:25</p>
+<p class="date">Created: 2023-09-04 Mon 12:28</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
